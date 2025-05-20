@@ -153,7 +153,7 @@ VPC（Virtual Private Cloud）とは，仮想ネットワークを構成する�
 
 |項目|型|説明|
 |---|---|---|
-|cidr_block|string|VPCで使用するIPアドレス範囲をCIDR形式で指定する．|
+|cidr_block *|string|VPCで使用するIPアドレス範囲をCIDR形式で指定する．|
 |assign_generated_ipv6_cidr_block|string|IPv6のCIDRブロックを自動で割り当てるかどうかを指定する．trueで有効となる．|
 |instance_tenancy|string|インスタンスのテナンシー（'default'または'dedicated'）を指定する．|
 |enable_dns_support|string|DNS解決を有効にするかどうかを指定する．trueの場合，インスタンスで内部DNSが使用できる．|
@@ -173,9 +173,9 @@ VPC内で定義するサブネットである．アベイラビリティゾー�
 
 |項目|型|説明|
 |---|---|---|
-|vpc_id|string|紐付けるVPCのID．|
+|vpc_id *|string|紐付けるVPCのID．|
 |availability_zone|string|作成するサブネットのアベイラビリティゾーン名．|
-|cidr_block|string|このサブネットで利用するCIDR形式のIP範囲．|
+|cidr_block *|string|このサブネットで利用するCIDR形式のIP範囲．|
 |map_public_ip_on_launch|string|trueに設定すると，起動したインスタンスに自動でパブリックIPを割り当てる．|
 |tags|string|リソースに付与するタグの定義．|
 
@@ -192,7 +192,7 @@ VPC内の通信経路（ルート）を定義するリソースである．ル�
 
 |項目|型|説明|
 |---|---|---|
-|vpc_id|string|このルートテーブルが関連付けられるVPCのID．|
+|vpc_id *|string|このルートテーブルが関連付けられるVPCのID．|
 |tags|string|リソースに付与するタグの定義．|
 
 ---
@@ -208,8 +208,8 @@ resource "aws_route_table_association" "RESOURSE_NAME" {
 
 |項目|型|説明|
 |---|---|---|
-|route_table_id|string|紐付けるルートテーブルのID．|
-|subnet_id|string|関連付ける対象のサブネットID．|
+|route_table_id *|string|紐付けるルートテーブルのID．|
+|subnet_id *|string|関連付ける対象のサブネットID．|
 
 ---
 
@@ -240,8 +240,8 @@ resource "aws_route" "RESOURSE_NAME" {
 
 |項目|型|説明|
 |---|---|---|
-|route_table_id|string|ルートを追加する対象のルートテーブルID．|
-|destination_cidr_block|string|このルートで対象とする通信先のCIDR範囲．|
-|gateway_id|string|インターネットゲートウェイなど，通信先に到達するためのゲートウェイID．|
+|route_table_id *|string|ルートを追加する対象のルートテーブルID．|
+|destination_cidr_block *|string|このルートで対象とする通信先のCIDR範囲．|
+|gateway_id *|string|インターネットゲートウェイなど，通信先に到達するためのゲートウェイID．|
 
 ---

@@ -156,6 +156,8 @@ resource "aws_security_group" "RESOURSE_NAME" {
 |vpc_id|string|対応させるVPCのID|
 |tags|object|タグ|
 
+※全てオプションのため設定がなければTerraformはランダムを入力
+
 <br>
 
 ## セキュリティグループルール作成
@@ -166,11 +168,11 @@ resource "aws_security_group_rule" "RESOURCE_NAME" {
 ```
 |項目|型|説明|
 |---|---|---|
-|security_group_id|string|セキュリティグループID|
-|type|enum|ingress（インバウンド）,egress（アウトバウンド）|
-|protocol|enum|"tcp","udp","icmp"など|
-|from_port|number|開始ポート番号，もしくは開始ICMP番号|
-|to_port|number|終了ポート番号，もしくは終了ICMP番号|
+|security_group_id *|string|セキュリティグループID|
+|type *|enum|ingress（インバウンド）,egress（アウトバウンド）|
+|protocol *|enum|"tcp","udp","icmp"など|
+|from_port *|number|開始ポート番号，もしくは開始ICMP番号|
+|to_port *|number|終了ポート番号，もしくは終了ICMP番号|
 |cidr_blocks|string|CIDRブロック|
 |source_security_group_id|string|アクセス許可したいセキュリティグループID|
 

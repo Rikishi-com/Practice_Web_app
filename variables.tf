@@ -13,9 +13,11 @@ variable "key_name" {
 
 variable "project" {
   description = "Project name"
+  default     = "practice"
 }
 
 variable "environment" {
   description = "Environment name"
+  default     = "Web_app"
 }
 

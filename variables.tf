@@ -21,3 +21,12 @@ variable "environment" {
   default     = "Web_app"
 }
 
+variable "db_username" {
+  description = "DB username"
+  default     = "ueno"
+}
+
+variable "db_name"{
+  description = "DB name"
+  default     = "practice"
+}

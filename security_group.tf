@@ -49,12 +49,12 @@ resource "aws_security_group" "app_sg" {
   }
 }
 
-resource "aws_security_group_rule" "app_in_tcp3000"{
-  security_group_id = aws_security_group.app_sg.id
-  type              = "ingress"
-  protocol          = "tcp"
-  from_port         = 3000
-  to_port           = 3000
+resource "aws_security_group_rule" "app_in_tcp3000" {
+  security_group_id        = aws_security_group.app_sg.id
+  type                     = "ingress"
+  protocol                 = "tcp"
+  from_port                = 3000
+  to_port                  = 3000
   source_security_group_id = aws_security_group.web_sg.id
 }
 
@@ -64,16 +64,16 @@ resource "aws_security_group_rule" "app_out_http" {
   protocol          = "tcp"
   from_port         = 80
   to_port           = 80
-  prefix_list_ids = [data.aws_prefix_list.s3_pl.id]
+  prefix_list_ids   = [data.aws_prefix_list.s3_pl.id]
 }
 
-resource "aws_security_group_rule" "app_out_https"{
+resource "aws_security_group_rule" "app_out_https" {
   security_group_id = aws_security_group.app_sg.id
-  type = "egress"
-  protocol = "tpc"
-  from_port = 443
-  to_port = 443
-  prefix_list_ids = [data.aws_prefix_list.s3_pl.id]
+  type              = "egress"
+  protocol          = "tcp"
+  from_port         = 443
+  to_port           = 443
+  prefix_list_ids   = [data.aws_prefix_list.s3_pl.id]
 }
 
 resource "aws_security_group_rule" "app_out_tcp3306" {
@@ -83,7 +83,7 @@ resource "aws_security_group_rule" "app_out_tcp3306" {
   from_port                = 3306
   to_port                  = 3306
   source_security_group_id = aws_security_group.db_sg.id
-  
+
 }
 #運用管理用のセキュリティグループを作成する
 resource "aws_security_group" "opmng_sg" { #oparation and management group

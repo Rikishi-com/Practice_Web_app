@@ -50,7 +50,7 @@ resource "aws_db_instance" "mysql_standalone" {
   identifier              = "${var.project}-mysql-standalone"
 
   engine                 = "mysql"
-  engine_version         = "8.0.36" # 使用するMySQLのバージョンに合わせて変更
+  engine_version         = "8.0.42" # 使用するMySQLのバージョンに合わせて変更
 
   instance_class         = "db.t3.micro" # インスタンスのクラスを指定
 
@@ -79,8 +79,8 @@ resource "aws_db_instance" "mysql_standalone" {
   maintenance_window = "Mon:05:00-Mon:08:00" # メンテナンスウィンドウを指定
   auto_minor_version_upgrade = false
 
-  deletion_protection = true # 削除保護を有効にする
-  skip_final_snapshot    = false # 最終スナップショットを取得する
+  deletion_protection = false # 削除保護を有効にする
+  skip_final_snapshot    = true # 最終スナップショットを取得する
 
   apply_immediately = true # 変更を即時適用する
 
